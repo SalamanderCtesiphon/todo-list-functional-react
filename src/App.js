@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Overview from './components/Overview';
 import './App.css';
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
   
 
   return (
-    <div>
+    <div className="App">
+      <Overview />
     </div>
     
   );
