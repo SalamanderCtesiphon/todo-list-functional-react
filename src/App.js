@@ -5,6 +5,8 @@ import './App.css'
 function App() {
   const [text, setText] = useState('')
   const [tasks, setTasks ] = useState([])
+  const [todoEditing, setTodoEditing] = useState(null)
+  const [editingText, setEditingText] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -23,6 +25,22 @@ function App() {
     const newTask = { id, ...task}
     setTasks([...tasks, newTask])
   }
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+
+  const submitEdits = (id) => {
+    const updatedTasks = [...tasks].map((task) => {
+      if (task.id === id) {
+        task.text = editingText;
+      } 
+      return task;
+    });
+    setTasks(updatedTasks);
+    setTodoEditing(null);
+  }
   
 
   return (
@@ -39,7 +57,14 @@ function App() {
           <button>submit</button>
         </form>
       </div>
-      <Overview />
+      <Overview 
+        tasks={tasks} 
+        deleteTask={deleteTask}
+        setEditingText={setEditingText}
+        submitEdits={submitEdits}
+        todoEditing={todoEditing}
+        setTodoEditing={setTodoEditing}
+      /> 
     </div>
     
   );
