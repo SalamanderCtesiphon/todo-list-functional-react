@@ -1,9 +1,9 @@
-import React from 'react';
-import Overview from './components/Overview';
-import './App.css';
+import React, { useState } from 'react'
+import Overview from './components/Overview'
+import './App.css'
 
 function App() {
-  
+  const [tasks, setTasks ] = useState([])
 
   
 
@@ -22,4 +22,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
